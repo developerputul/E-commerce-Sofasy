@@ -35,6 +35,7 @@ require __DIR__.'/auth.php';
 
 //Admin Dashboard All Route
 Route::middleware(['auth','role:admin'])->group(function(){
+
     Route::get('/admin/dashboard',[AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout',[AdminController::class, 'AdminLogout'])->name('admin.logout');
     Route::get('/admin/profile',[AdminController::class, 'AdminProfile'])->name('admin.profile');
@@ -46,8 +47,10 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
 //Vendor Dashboard All Route
 Route::middleware(['auth','role:vendor'])->group(function(){
+
     Route::get('/vendor/dashboard',[VendorController::class, 'VendorDashboard'])->name('vendor.dashboard');
     Route::get('/vendor/logout', [VendorController::class, 'VendorDestroy'])->name('vendor.logout');
+    Route::get('/vendor/profile',[VendorController::class, 'VendorProfile'])->name('vendor.profile');
 });  //End Vendor All Group Route
 
 Route::get('/admin/login',[AdminController::class, 'AdminLogin']);
