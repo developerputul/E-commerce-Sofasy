@@ -50,8 +50,8 @@ class VendorController extends Controller
         $data->vendor_short_info = $request->vendor_short_info;
 
         if ($request->file('photo')) {
-           $file = $request->file('photo');
-           @unlink(public_path('upload/vendor_images/'.$data->photo));
+            $file = $request->file('photo');
+            @unlink(public_path('upload/vendor_images/'.$data->photo));
            $filename = date('YmdHi').$file->getClientOriginalName();
            $file->move(public_path('upload/vendor_images'),$filename);
            $data['photo'] = $filename;
