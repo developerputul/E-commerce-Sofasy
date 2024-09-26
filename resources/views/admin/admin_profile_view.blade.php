@@ -78,7 +78,7 @@
                                     <h6 class="mb-0">Email</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="email" name="email" class="form-control" value="{{ $adminData->email }}" />
+                                <input type="email" name="email" class="form-control" value="{{ $adminData->email }}" />
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -86,7 +86,7 @@
                                     <h6 class="mb-0">Phone</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" name="phone" class="form-control" value="{{ $adminData->phone }}" />
+                                <input type="text" name="phone" class="form-control" value="{{ $adminData->phone }}" />
                                 </div>
                             </div>
                             <div class="row mb-3">
