@@ -10,7 +10,7 @@ class BrandController extends Controller
 {
     public function AllBrand(){
         $brands = Brand::latest()->get();
-       return view('backend.brand.brand_all',compact('brands'));
+        return view('backend.brand.brand_all',compact('brands'));
     } // End Method
 
     public function AddBrand(){
@@ -18,6 +18,7 @@ class BrandController extends Controller
     } // End Method
 
     public function BrandStore(Request $request){
+
         $image = $request->file('brand_image');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension(); 
         $image->move(public_path('upload/brand_image'), $name_gen);
@@ -42,6 +43,7 @@ class BrandController extends Controller
     } // End Method
 
     public function UpdateBrand(Request $request){
+        
         $brand_id = $request->id;
         $old_img = $request->old_image;
 

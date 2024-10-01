@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +83,18 @@ Route::controller(BrandController::class)->group(function(){
     Route::get('/edit/brand/{id}', 'EditBrand')->name('edit.brand');
     Route::post('/update/brand', 'UpdateBrand')->name('update.brand');
     Route::get('/delete/brand{id}', 'DeleteBrand')->name('delete.brand');
+
+});
+
+//All Category Route
+Route::controller(CategoryController::class)->group(function(){
+    Route::get('/all/category', 'AllCategory')->name('all.category');
+    Route::get('/add/category', 'AddCategory')->name('add.category');
+    Route::post('/category/store', 'CategoryStore')->name('category.store');
+    Route::get('/edit/category/{id}', 'EditCategory')->name('edit.category');
+
+    Route::post('/update/category', 'UpdateCategory')->name('update.category');
+    Route::get('/delete/category{id}', 'DeleteCategory')->name('delete.category');
 
 });
 
