@@ -101,7 +101,12 @@ class VendorController extends Controller
             'alert-type' => 'success'
         );
         return back()->with($notification); 
-
+        
     }// End Method
 
+    public function BecomeVendor(){
+
+        return view('auth.become_vendor');
+    } // End Method
+ 
 }
