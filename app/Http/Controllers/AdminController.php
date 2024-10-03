@@ -94,8 +94,26 @@ class AdminController extends Controller
             'message' => 'Password Change Successfully',
             'alert-type' => 'success'
         );
-        return back()->with($notification); 
-
+        return redirect()->back()->with($notification); 
     }// End Method
+
+    public function InactiveVendor(){
+
+        $inActiveVendor = User::where('status','inactive')->where('role','vendor')->latest()->get();
+        return view('backend.vendor.inactive_vendor',compact('inActiveVendor'));
+    } // End Method
+
+    public function ActiveVendor(){
+
+        $activeVendor = User::where('status','active')->where('role','vendor')->latest()->get();
+        return view('backend.vendor.active_vendor',compact('activeVendor'));
+    } // End Method
+
+    public function InActiveVendorDetails($id){
+
+        $inactiveVendorDetails = User::findOrFail($id);
+        return view('backend.vendor.inactive_vendor_details',compact('inactiveVendorDetails'));
+
+    } // End Method
 
 }

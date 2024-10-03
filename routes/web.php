@@ -75,6 +75,7 @@ Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])->name('ven
 Route::get('/become/vendor', [VendorController::class, 'BecomeVendor'])->name('become.vendor');
 Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->name('vendor.register');
 
+
 Route::middleware(['auth','role:admin'])->group(function(){
 //All Brand Route
 Route::controller(BrandController::class)->group(function(){
@@ -85,6 +86,7 @@ Route::controller(BrandController::class)->group(function(){
     Route::post('/update/brand', 'UpdateBrand')->name('update.brand');
     Route::get('/delete/brand{id}', 'DeleteBrand')->name('delete.brand');
 });
+
 //All Category Route
 Route::controller(CategoryController::class)->group(function(){
     Route::get('/all/category', 'AllCategory')->name('all.category');
@@ -104,6 +106,14 @@ Route::controller(SubCategoryController::class)->group(function(){
     Route::get('/edit/subcategory/{id}', 'EditSubCategory')->name('edit.subcategory');
     Route::post('/update/subcategory', 'UpdateSubCategory')->name('update.subcategory');
     Route::get('/delete/subcategory{id}', 'DeleteSubCategory')->name('delete.subcategory');
+});
+
+//All Vendor Active and Inactive Route
+Route::controller(AdminController::class)->group(function(){
+    Route::get('/inactive/vendor', 'InactiveVendor')->name('inactive.vendor');
+    Route::get('/active/vendor', 'ActiveVendor')->name('active.vendor');
+    Route::get('/inactive/vendor/details/{id}', 'InActiveVendorDetails')->name('inactive.vendor.details');
+   
 });
 
 
