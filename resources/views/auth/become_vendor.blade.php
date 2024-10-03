@@ -45,7 +45,7 @@
                                             <p class="mb-30">Already have an Vendor account? <a
                                                     href="{{ route('vendor.login') }}">Vendor Login</a></p>
                                         </div>
-                                        <form method="POST" action="{{ route('register') }}">
+                                        <form method="POST" action="{{ route('vendor.register') }}">
                                             @csrf
                                             <div class="form-group">
                                                 <input type="text" id="name" required="" name="name" placeholder="Shop Name" />
@@ -64,11 +64,11 @@
                                             <div class="form-group">
                                                 <select name="vendor_join" class="form-select mb-3" aria-label="Default select example">
                                                     <option selected="">Selet Join Date</option>
-                                                    <option value="1">2022</option>
-                                                    <option value="2">2023</option>
-                                                    <option value="3">2024</option>
-                                                    <option value="3">2025</option>
-                                                    <option value="3">2026</option>
+                                                    <option value="2022">2022</option>
+                                                    <option value="2023">2023</option>
+                                                    <option value="2024">2024</option>
+                                                    <option value="2025">2025</option>
+                                                    <option value="2026">2026</option>
                                                 </select>
                                             </div>
 
