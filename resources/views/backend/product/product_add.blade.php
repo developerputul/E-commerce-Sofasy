@@ -1,5 +1,6 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <div class="page-content">
 
@@ -25,50 +26,54 @@
            <div class="form-body mt-4">
             <div class="row">
                <div class="col-lg-8">
-               <div class="border border-3 p-4 rounded">
+                <div class="border border-3 p-4 rounded">
 
                 <div class="mb-3">
                     <label for="inputProductTitle" class="form-label">Product Name</label>
                     <input type="text" name="product_name" class="form-control" id="inputProductTitle" placeholder="Enter product title">
-                  </div>
+                </div>
 
-                <div class="mb-3">
+                 <div class="mb-3">
                     <label for="inputProductTitle" class="form-label">Product Tags</label>
                     <input type="text" name="product_tags" class="form-control visually-hidden" data-role="tagsinput" value="New Product,">
-                  </div>
+                </div>
 
                 <div class="mb-3">
                     <label for="inputProductTitle" class="form-label">Product Size</label>
                     <input type="text" name="product_size" class="form-control visually-hidden" data-role="tagsinput" value="Small,Medium,large,">
-                  </div>
+                </div>
 
                 <div class="mb-3">
                     <label for="inputProductTitle" class="form-label">Product Color</label>
                     <input type="text" name="product_color" class="form-control visually-hidden" data-role="tagsinput" value="Red, Green, Blue">
-                  </div>
+                </div>
 
-                  <div class="mb-3">
+                <div class="mb-3">
                     <label for="inputProductDescription" class="form-label">Short Description</label>
                     <textarea name="short_desc" class="form-control" id="inputProductDescription" rows="3"></textarea>
-                  </div>
+                </div>
 
-                  <div class="mb-3">
+                <div class="mb-3">
                     <label for="inputProductDescription" class="form-label">Long Description</label>
                     <textarea name="long_desc" class="form-control" id="inputProductDescription" rows="3"></textarea>
-                  </div>
-                  
-                  <div class="mb-3">
-                    <label for="inputProductTitle" class="form-label">Main Thambnail</label>
-                    <input name="product_thambnail" class="form-control" type="file" id="formFile">
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="inputProductTitle" class="form-label">Multi Image</label>
-                    <input class="form-control" name="multi_img[]" type="file" id="formFileMultiple" multiple="">
-                  </div>
-
-
                 </div>
+                
+                <div class="mb-3">
+                    <label for="inputProductTitle" class="form-label">Main Thambnail</label>
+                    <input name="product_thambnail" class="form-control" type="file" id="formFile" onchange="mainThamUrl(this)">
+                    <img src="" id="mainThmb" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputProductTitle" class="form-label">Multi Image</label>
+                    <input class="form-control" name="multi_img[]" type="file" id="multiImg" multiple="">
+                    <div class="row" id="preview_img">
+                    </div>
+                </div>
+
+            </div>
+
+
                </div>
                <div class="col-lg-4">
                 <div class="border border-3 p-4 rounded">
@@ -90,41 +95,87 @@
                       </div>
 
                       <div class="col-md-6">
-                        <label for="inputStarPoints" class="form-label">Star Points</label>
-                        <input type="password" class="form-control" id="inputStarPoints" placeholder="00.00">
+                        <label for="inputStarPoints" class="form-label">Product QTY</label>
+                        <input type="text" name="product_qty" class="form-control" id="inputStarPoints" placeholder="00.00">
                       </div>
-                      
+
                       <div class="col-12">
-                        <label for="inputProductType" class="form-label">Product Type</label>
-                        <select class="form-select" id="inputProductType">
+                        <label for="inputProductType" class="form-label">Product Brand</label>
+                        <select name="brand_id" class="form-select" id="inputProductType">
+                            <option></option>
+                          @foreach ($brands as $brand)
+                            <option value="{{ $brand->id }}">{{ $brand->brand_name}}</option>
+                          @endforeach
+                          </select>
+                      </div>
+
+                      <div class="col-12">
+                        <label for="inputVendor" class="form-label">Product Category</label>
+                        <select name="category_id" class="form-select" id="inputVendor">
+                            <option></option>
+                          @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                          @endforeach
+                          </select>
+                      </div>
+
+                      <div class="col-12">
+                        <label for="inputCollection" class="form-label">Product SubCategory</label>
+                        <select name="subcategory_id" class="form-select" id="inputCollection">
                             <option></option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                           </select>
                       </div>
+
                       <div class="col-12">
-                        <label for="inputVendor" class="form-label">Vendor</label>
-                        <select class="form-select" id="inputVendor">
+                        <label for="inputCollection" class="form-label">Select Vendor</label>
+                        <select name="vendor_id" class="form-select" id="inputCollection">
                             <option></option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                           @foreach ($activeVendor as $vendor)
+                            <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
+                            @endforeach
                           </select>
                       </div>
+
                       <div class="col-12">
-                        <label for="inputCollection" class="form-label">Collection</label>
-                        <select class="form-select" id="inputCollection">
-                            <option></option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </select>
+                          <div class="row g-3">
+
+                            <div class="col-md-6">
+                              <div class="form-check">
+                                <input class="form-check-input" name="hot_deals" type="checkbox" value="1" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Hot Deals</label>
+                              </div>
+                          </div>
+
+                            <div class="col-md-6">
+                              <div class="form-check">
+                                <input class="form-check-input" name="featured" type="checkbox" value="1" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Featured</label>
+                              </div>
+                          </div>
+
+                
+
+                            <div class="col-md-6">
+                              <div class="form-check">
+                                <input class="form-check-input" name="special_offer" type="checkbox" value="1" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Special Offer</label>
+                              </div>
+                          </div>
+
+                            <div class="col-md-6">
+                              <div class="form-check">
+                                <input class="form-check-input" name="special_deals" type="checkbox" value="1" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Special Deals</label>
+                              </div>
+                          </div>
+
+                         </div>
                       </div>
-                      <div class="col-12">
-                        <label for="inputProductTags" class="form-label">Product Tags</label>
-                        <input type="text" class="form-control" id="inputProductTags" placeholder="Enter Product Tags">
-                      </div>
+
+                      <hr>  
                       <div class="col-12">
                           <div class="d-grid">
                              <button type="button" class="btn btn-primary">Save Product</button>
@@ -137,7 +188,54 @@
         </div>
       </div>
   </div>
-
 </div>
+
+
+
+<script type="text/javascript">
+	function mainThamUrl(input){
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#mainThmb').attr('src',e.target.result).width(80).height(80);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
+
+
+ <script> 
+  $(document).ready(function(){
+   $('#multiImg').on('change', function(){ //on file input change
+      if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
+      {
+          var data = $(this)[0].files; //this file data
+           
+          $.each(data, function(index, file){ //loop though each file
+              if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
+                  var fRead = new FileReader(); //new filereader
+                  fRead.onload = (function(file){ //trigger function on successful read
+                  return function(e) {
+                      var img = $('<img/>').addClass('thumb').attr('src', e.target.result) .width(100)
+                  .height(80); //create image element 
+                      $('#preview_img').append(img); //append image to output element
+                  };
+                  })(file);
+                  fRead.readAsDataURL(file); //URL representing the file's data.
+              }
+          });
+           
+      }else{
+          alert("Your browser doesn't support File API!"); //if File API is absent
+      }
+   });
+  });
+   
+  </script> 
+
+
+
+
 
 @endsection
