@@ -25,6 +25,7 @@
                     <div class="col-lg-10">
                         <div class="card">
                             <div class="card-body">
+
                                 <form id="myForm" method="POST" action="{{ route('category.store') }}"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -73,33 +74,33 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#myForm').validate({
-                rules: {
-                    category_name: {
-                        required: true,
-                    },
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#myForm').validate({
+            rules: {
+                category_name: {
+                    required: true,
                 },
-                messages: {
-                    category_name: {
-                        required: 'Please Enter Category Name',
-                    },
+            },
+            messages: {
+                category_name: {
+                    required: 'Please Enter Category Name',
                 },
-                errorElement: 'span',
-                errorPlacement: function(error, element) {
-                    error.addClass('invalid-feedback');
-                    element.closest('.form-group').append(error);
-                },
-                highlight: function(element, errorClass, validClass) {
-                    $(element).addClass('is-invalid');
-                },
-                unhighlight: function(element, errorClass, validClass) {
-                    $(element).removeClass('is-invalid');
-                },
-            });
+            },
+            errorElement: 'span',
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function(element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            },
         });
-    </script>
+    });
+</script>
 
     <script type="text/javascript">
         $(document).ready(function() {
