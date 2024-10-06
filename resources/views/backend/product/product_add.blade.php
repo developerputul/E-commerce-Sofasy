@@ -24,7 +24,7 @@
           <h5 class="card-title">Add New Product</h5>
           <hr/>
 
-          <form id="myForm" method="POST" action="{{ route('category.store') }}"
+          <form id="myForm" method="POST" action="{{ route('store.product') }}"
           enctype="multipart/form-data">
           @csrf
 
@@ -253,15 +253,6 @@
               product_qty: {
                   required: 'Please Enter Product Quantity',
               },
-              // brand_id: {
-              //     required: 'Please Enter Brand ID',
-              // },
-              // category_id: {
-              //     required: 'Please Enter Category ID',
-              // },
-              // subcategory_id: {
-              //     required: 'Please Enter SubCategory ID',
-              // },
           },
           errorElement: 'span',
           errorPlacement: function(error, element) {
