@@ -66,6 +66,25 @@ class ProductController extends Controller
         ]);
         //Multiple Image Upload//
 
+        $images = $request->file('multi_img');
+        foreach($images as $img){
+        $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+        $img->move(public_path('/upload/products/multiImage/'),$make_name);
+        $uploadPath = 'upload/products/multiImage/'.$make_name;
 
+        MultiImg::insert([
+
+            'product_id' => $product_id,
+            'photo_name' => $uploadPath,
+            'created_at' => Carbon::now(), 
+        ]);
+        } // End Foreach
+        //End MultiImage Parth
+
+        $notification = array(
+            'message' => 'Product Inserted Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('all.product')->with($notification);
     } // End Method
 }
