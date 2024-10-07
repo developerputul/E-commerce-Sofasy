@@ -3,7 +3,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <div class="page-content">
-
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
         <div class="breadcrumb-title pe-3">Edit Product</div>
@@ -24,9 +23,10 @@
           <h5 class="card-title">Edit Product</h5>
           <hr/>
 
-          <form id="myForm" method="POST" action="{{ route('store.product') }}"
-          enctype="multipart/form-data">
-          @csrf
+      <form id="myForm" method="POST" action="{{ route('update.product') }}">
+      @csrf
+
+          <input type="hidden" name="id" value="{{ $products->id }}">
 
            <div class="form-body mt-4">
             <div class="row">
@@ -187,6 +187,77 @@
   </div>
 </div>
 
+ {{-- Main Image Thambnail Update --}}
+      <div class="page-content">
+        <h6 class="mb-0 text-uppercase">Update Main Image Thambnail</h6>
+        <br>
+
+        <div class="card">
+          <form method="POST" action="{{ route('update.product.thambnail') }}" enctype="multipart/form-data">
+            @csrf
+
+            <input type="hidden" name="id" value="{{ $products->id }}">
+            <input type="hidden" name="old_img" value="{{ $products->product_thambnail }}">
+
+          <div class="card-body">
+
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Chose Thambnail Image</label>
+              <input name="product_thambnail" class="form-control" type="file" id="formFile">
+            </div>
+
+            <div class="mb-3">
+              <label for="formFile" class="form-label"></label>
+              <img src="{{ asset($products->product_thambnail) }}" style="width: 100px; height:100px;">
+            </div>
+            <input type="submit" class="btn btn-primary px-4" value="Save Changes" />
+           </div>
+
+          </form>
+        </div>
+      </div>
+ {{--End Main Image Thambnail Update --}}
+
+
+ {{-- Multi Image  Update --}}
+ <div class="page-content">
+  <h6 class="mb-0 text-uppercase">Update Main Image Thambnail</h6>
+  <br>
+      <div class="card">
+        <div class="card-body">
+          <table class="table mb-0 table-striped">
+            <thead>
+              <tr>
+                <th scope="col">SL</th>
+                <th scope="col">Image</th>
+                <th scope="col">Change Image</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+            <form method="POST" action="{{ route('update.product.multiimage') }}" enctype="multipart/form-data">
+                @csrf
+
+                @foreach ($multiImgs as $key => $img)
+              <tr>
+                <th scope="row">{{ $key+1 }}</th>
+                <td><img src="{{ asset($img->photo_name) }}" style="width:70; height:50px;"></td>
+                <td><input type="file" class="form-group" name="multi_img[{{ $img->id }}]" id=""></td>
+                <td>
+
+                  <input type="submit" class="btn btn-primary px-4" value="Update Image" />
+                  <a href="{{ route('product.multiimage.delete',$img->id) }}" class="btn btn-danger" id="delete">Delete</a>
+                </td>
+              </tr>
+              @endforeach
+
+            </form>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+ {{--End Multi Image Thambnail Update --}}
 
 <script type="text/javascript">
   $(document).ready(function() {
