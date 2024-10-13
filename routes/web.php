@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Middleware\RedirectIfAuthenticated;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,8 +72,12 @@ Route::middleware(['auth','role:vendor'])->group(function(){
 
 });  //End Vendor All Group Route
 
-Route::get('/admin/login',[AdminController::class, 'AdminLogin']);
-Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])->name('vendor.login');
+Route::get('/admin/login',[AdminController::class, 'AdminLogin'])
+->middleware(RedirectIfAuthenticated::class);
+
+Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])
+->name('vendor.login')->middleware(RedirectIfAuthenticated::class);
+
 Route::get('/become/vendor', [VendorController::class, 'BecomeVendor'])->name('become.vendor');
 Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->name('vendor.register');
 
