@@ -75,11 +75,14 @@ Route::middleware(['auth','role:vendor'])->group(function(){
 //Vendor All Route
 Route::controller(VendorProductController::class)->group(function(){
     Route::get('/vendor/all/product', 'VendorAllProduct')->name('vendor.all.product');
+    Route::get('/vendor/add/product', 'VendorAddProduct')->name('vendor.add.product');
+
+    Route::get('/vendor/subcategory/ajax/{category_id}', 'VendorGetSubCategory');
     
 });
 
 
-});  //End Vendor All Group Route
+});  //End Group Middleware
 
 Route::get('/admin/login',[AdminController::class, 'AdminLogin'])
 ->middleware(RedirectIfAuthenticated::class);
@@ -123,6 +126,7 @@ Route::controller(SubCategoryController::class)->group(function(){
     Route::get('/edit/subcategory/{id}', 'EditSubCategory')->name('edit.subcategory');
     Route::post('/update/subcategory', 'UpdateSubCategory')->name('update.subcategory');
     Route::get('/delete/subcategory{id}', 'DeleteSubCategory')->name('delete.subcategory');
+
     Route::get('/subcategory/ajax/{category_id}', 'GetSubCategory');
 });
 

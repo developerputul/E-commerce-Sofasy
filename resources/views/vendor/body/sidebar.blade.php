@@ -37,7 +37,7 @@
             </a>
             <ul>
                 <li> <a href="{{ route('vendor.all.product') }}"><i class="bx bx-right-arrow-alt"></i>All Product</a>
-                <li> <a href="index.html"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
+                <li> <a href="{{ route('vendor.add.product') }}"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
                 </li>
                
             </ul>
