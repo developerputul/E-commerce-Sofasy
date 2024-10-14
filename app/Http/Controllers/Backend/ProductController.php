@@ -206,19 +206,16 @@ class ProductController extends Controller
 
         Product::findOrFail($id)->update(['status' => 0]);
         $notification = array(
-
             'message' => 'Product Inactive Successfully',
             'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);
     } // End Method
 
-    
     public function ProductActive($id){
 
         Product::findOrFail($id)->update(['status' => 1]);
         $notification = array(
-
             'message' => 'Product Active Successfully',
             'alert-type' => 'success',
         );
@@ -231,7 +228,6 @@ class ProductController extends Controller
         unlink($product->product_thambnail);
 
         Product::findOrFail($id)->delete();
-
         $images = MultiImg::where('product_id',$id)->get();
 
         foreach($images as $img){
@@ -240,7 +236,6 @@ class ProductController extends Controller
         }// End Foreach Method
 
         $notification = array(
-
             'message' => 'Product Deleted Successfully',
             'alert-type' => 'success',
         );

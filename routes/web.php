@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 /*
@@ -70,6 +71,14 @@ Route::middleware(['auth','role:vendor'])->group(function(){
     Route::get('/vendor/change/password',[VendorController::class, 'VendorChangepassword'])->name('vendor.change.password');
     Route::post('/vendor/update/password',[VendorController::class, 'VendorUpdatepassword'])->name('vendor.update.password');
 
+
+//Vendor All Route
+Route::controller(VendorProductController::class)->group(function(){
+    Route::get('/vendor/all/product', 'VendorAllProduct')->name('vendor.all.product');
+    
+});
+
+
 });  //End Vendor All Group Route
 
 Route::get('/admin/login',[AdminController::class, 'AdminLogin'])
@@ -82,7 +91,9 @@ Route::get('/become/vendor', [VendorController::class, 'BecomeVendor'])->name('b
 Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->name('vendor.register');
 
 
+
 Route::middleware(['auth','role:admin'])->group(function(){
+
 //All Brand Route
 Route::controller(BrandController::class)->group(function(){
     Route::get('/all/brand', 'AllBrand')->name('all.brand');
