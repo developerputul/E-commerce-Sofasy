@@ -23,7 +23,7 @@ class CategoryController extends Controller
 
         $image = $request->file('category_image');
         $name_gen =hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('/upload/category'),$name_gen);
+        $image->move(public_path('/upload/category'), $name_gen);
         $save_url = 'upload/category/'.$name_gen;
 
         Category::insert([
