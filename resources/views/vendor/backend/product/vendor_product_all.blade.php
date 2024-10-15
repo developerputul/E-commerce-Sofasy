@@ -72,7 +72,7 @@
                             </td>
 
                             <td>
-                                <a href="{{ route('edit.product',$item->id) }}" class="btn btn-info" 
+                                <a href="{{ route('vendor.edit.product',$item->id) }}" class="btn btn-info" 
                                     title="Edit Data"><i class="fa fa-pencil"></i></a>
 
                                 <a href="{{ route('delete.product',$item->id) }}" class="btn btn-danger" 
@@ -81,10 +81,10 @@
                                 <a href="{{ route('edit.category',$item->id) }}" class="btn btn-warning" 
                                     title="Details Page"><i class="fa fa-eye"></i></a>
                                 @if ($item->status == 1)
-                                <a href="{{ route('product.inactive',$item->id) }}" class="btn btn-primary" 
+                                <a href="{{ route('vendor.product.inactive',$item->id) }}" class="btn btn-primary" 
                                     title="InActive"><i class="fa-solid fa-thumbs-down"></i></a>
                                 @else 
-                                <a href="{{ route('product.active',$item->id) }}" class="btn btn-primary" 
+                                <a href="{{ route('vendor.product.active',$item->id) }}" class="btn btn-primary" 
                                     title="Active"><i class="fa-solid fa-thumbs-up"></i></a>
                                 @endif
                             </td>

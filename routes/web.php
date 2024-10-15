@@ -76,6 +76,15 @@ Route::middleware(['auth','role:vendor'])->group(function(){
 Route::controller(VendorProductController::class)->group(function(){
     Route::get('/vendor/all/product', 'VendorAllProduct')->name('vendor.all.product');
     Route::get('/vendor/add/product', 'VendorAddProduct')->name('vendor.add.product');
+    Route::post('/vendor/store/product', 'VendorStoreProduct')->name('vendor.store.product');
+    Route::get('/vendor/edit/product/{id}', 'VendorEditProduct')->name('vendor.edit.product');
+    Route::post('/vendor/update/product', 'VendorUpdateProduct')->name('vendor.update.product');
+    Route::post('/vendor/update/product/thambnail', 'VendorUpdateProductThambnail')->name('vendor.update.product.thambnail');
+    Route::post('/vendor/update/product/multiimage', 'VendorUpdateProductMultiimage')->name('vendor.update.product.multiimage');
+    Route::get('/vendor/product/multiimage/delete/{id}', 'VendorMultiImageDelete')->name('vendor.product.multiimage.delete');
+    Route::get('/vendor/product/inactive/{id}', 'VendorInactiveProduct')->name('vendor.product.inactive');
+    Route::get('/vendor/product/active/{id}', 'VendorActiveProduct')->name('vendor.product.active');
+
 
     Route::get('/vendor/subcategory/ajax/{category_id}', 'VendorGetSubCategory');
     

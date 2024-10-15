@@ -1,17 +1,19 @@
-@extends('admin.admin_dashboard')
-@section('admin')
+
+
+@extends('vendor.vendor_dashboard')
+@section('vendor')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Edit Product</div>
+        <div class="breadcrumb-title pe-3">Edit Vendor Product</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Edit Product</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Vendor Product</li>
                 </ol>
             </nav>
         </div>
@@ -20,10 +22,10 @@
 
   <div class="card">
       <div class="card-body p-4">
-          <h5 class="card-title">Edit Product</h5>
+          <h5 class="card-title">Edit Vendor Product</h5>
           <hr/>
 
-      <form id="myForm" method="POST" action="{{ route('update.product') }}">
+      <form id="myForm" method="POST" action="{{ route('vendor.update.product') }}">
       @csrf
 
           <input type="hidden" name="id" value="{{ $products->id }}">
@@ -125,15 +127,6 @@
                           </select>
                       </div>
 
-                      <div class="col-12">
-                        <label for="inputCollection" class="form-label">Select Vendor</label>
-                        <select name="vendor_id" class="form-select" id="inputCollection">
-                            <option></option>
-                           @foreach ($activeVendor as $vendor)
-                            <option value="{{ $vendor->id }}" {{ $vendor->id == $products->vendor_id ? 'selected' : '' }}>{{ $vendor->name }}</option>
-                            @endforeach
-                          </select>
-                      </div>
 
                       <div class="col-12">
                           <div class="row g-3">
@@ -191,7 +184,7 @@
         <br>
 
         <div class="card">
-          <form method="POST" action="{{ route('update.product.thambnail') }}" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('vendor.update.product.thambnail') }}" enctype="multipart/form-data">
             @csrf
 
             <input type="hidden" name="id" value="{{ $products->id }}">
@@ -233,7 +226,7 @@
               </tr>
             </thead>
             <tbody>
-            <form method="POST" action="{{ route('update.product.multiimage') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('vendor.update.product.multiimage') }}" enctype="multipart/form-data">
                 @csrf
 
                 @foreach ($multiImgs as $key => $img)
@@ -244,7 +237,7 @@
                 <td>
 
                   <input type="submit" class="btn btn-primary px-4" value="Update Image" />
-                  <a href="{{ route('product.multiimage.delete',$img->id) }}" class="btn btn-danger" id="delete">Delete</a>
+                  <a href="{{ route('vendor.product.multiimage.delete',$img->id) }}" class="btn btn-danger" id="delete">Delete</a>
                 </td>
               </tr>
               @endforeach
