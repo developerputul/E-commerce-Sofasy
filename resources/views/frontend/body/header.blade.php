@@ -233,6 +233,7 @@
                     <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}"
                             alt="logo" /></a>
                 </div>
+
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
                         <a class="categories-button-active" href="#">
@@ -294,13 +295,14 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
                         <nav>
                             <ul>
                                 <li>
                                     <a class="active" href="index.html">Home </a>
                                 </li>
-
                             @php
                                 $categories = App\Models\Category::orderBy('category_name', 'ASC')->limit(6)->get();
                             @endphp
@@ -329,7 +331,7 @@
 
 
                 <div class="hotline d-none d-lg-flex">
-                    <img src="assets/imgs/theme/icons/icon-headphone.svg" alt="hotline" />
+                    <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-headphone.svg') }}" alt="hotline" />
                     <p>1900 - 888<span>24/7 Support Center</span></p>
                 </div>
                 <div class="header-action-icon-2 d-block d-lg-none">
