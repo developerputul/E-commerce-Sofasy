@@ -15,6 +15,9 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
+use App\Http\Controllers\Frontend\IndexController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -191,3 +194,7 @@ Route::controller(BannerController::class)->group(function(){
 
 
 }); //Admin End Middleware
+
+//Frontend All Details Route
+
+Route::get('/product/details/{id}/{slug}',[IndexController::class, 'ProductDetails']);

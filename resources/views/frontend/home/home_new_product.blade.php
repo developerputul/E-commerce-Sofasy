@@ -25,7 +25,6 @@
         </div>
         <!--End nav-tabs-->
 
-
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
                 <div class="row product-grid-4">
@@ -36,7 +35,7 @@
                                 data-wow-delay=".1s">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
-                                        <a href="shop-product-right.html">
+                                        <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">
                                             <img class="default-img" src="{{ asset($product->product_thambnail) }}"
                                             style="height: 120px; width: 120px;" />
                                         </a>
@@ -56,7 +55,7 @@
                                     @endphp
 
                                     <div class="product-badges product-badges-position product-badges-mrg">
-                                        @if ($product->discount_price == null)
+                                        @if ($product->discount_price == Null)
                                             <span class="new">New</span>
                                         @else
                                             <span class="hot">{{ round($discount) }} %</span>
@@ -67,7 +66,7 @@
                                     <div class="product-category">
                                         <a href="shop-grid-right.html">{{ $product['category']['category_name'] }}</a>
                                     </div>
-                                    <h2><a href="shop-product-right.html">{{ $product->product_name }}</a></h2>
+                                    <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">{{ $product->product_name }}</a></h2>
                                     <div class="product-rate-cover">
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
