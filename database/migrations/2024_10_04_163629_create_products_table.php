@@ -9,13 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->integer('brand_id');
-            $table->integer('category_id');
-            $table->integer('subcategory_id');
+            $table->foreignId('brand_id')->nullable()->constrained('brands')->nullOnDelete();
+            $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
+            $table->foreignId('subcategory_id')->nullable()->constrained('sub_categories')->nullOnDelete();
             $table->string('product_name');
             $table->string('product_slug');
             $table->string('product_code');

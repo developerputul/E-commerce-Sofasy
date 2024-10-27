@@ -9,11 +9,12 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+   
     public function up(): void
     {
         Schema::create('sub_categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('category_id');
+            $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
             $table->string('subcategory_name');
             $table->string('subcategory_slug');
             $table->timestamps();
