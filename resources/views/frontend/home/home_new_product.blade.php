@@ -145,6 +145,7 @@
                                             $amount = $product->selling_price - $product->discount_price;
                                             $discount = ($amount / $product->selling_price) * 100;
                                         @endphp
+                                        
                                         <div class="product-badges product-badges-position product-badges-mrg">
                                             @if ($product->discount_price == null)
                                                 <span class="new">New</span>
