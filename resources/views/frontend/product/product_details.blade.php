@@ -53,6 +53,7 @@
                                 <span class="font-small ml-5 text-muted"> (32 reviews)</span>
                             </div>
                         </div>
+
                         <div class="clearfix product-price-cover">
                             @php
                                 $amount = $product->selling_price - $product->discount_price;
@@ -74,8 +75,8 @@
                                     </span>
                                 </div>
                             @endif
-
                         </div>
+                        
                         <div class="short-desc mb-30">
                             <p class="font-lg">{{ $product->short_desc }}</p>
                         </div>
@@ -277,7 +278,7 @@
                                 </h6>
                                 @else 
                                 <h6>
-                                    <a href="vendor-details-2.html">{{ $product['vendor']['name'] }}</a>
+                                <a href="vendor-details-2.html">{{ $product['vendor']['name'] }}</a>
                                 </h6>
                                 @endif
                                    
@@ -504,6 +505,7 @@
                                         <img class="default-img" src="{{ asset($product->product_thambnail) }}" alt="" />
                                         </a>
                                     </div>
+
                                     <div class="product-action-1">
                                         <a aria-label="Quick view" class="action-btn small hover-up"
                                             data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
@@ -512,26 +514,26 @@
                                             href="shop-wishlist.html" tabindex="0"><i
                                                 class="fi-rs-heart"></i></a>
                                         <a aria-label="Compare" class="action-btn small hover-up"
-                                            href="shop-compare.html" tabindex="0"><i
-                                                class="fi-rs-shuffle"></i></a>
+                                            href="shop-compare.html" tabindex="0"><i class="fi-rs-shuffle"></i></a>
                                     </div>
-                                    <div class="product-badges product-badges-position product-badges-mrg">
-                                        
+
                                 @php
                                 $amount = $product->selling_price - $product->discount_price;
                                 $discount = ($amount / $product->selling_price) * 100;
                                 @endphp
+
+                                <div class="product-badges product-badges-position product-badges-mrg">
                                     @if ($product->discount_price == null)
                                     <span class="new">New</span>
-                                @else
+                                    @else
                                     <span class="hot">{{ round($discount) }} %</span>
-                                @endif
-                                    </div>
-
-
+                                    @endif
                                 </div>
+
+                            </div>
+
                                 <div class="product-content-wrap">
-                                    <h2><a href="shop-product-right.html" tabindex="0">{{ $product->product_name }}</a>
+                                    <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}" tabindex="0">{{ $product->product_name }}</a>
                                     </h2>
                                     <div class="rating-result" title="90%">
                                         <span> </span>

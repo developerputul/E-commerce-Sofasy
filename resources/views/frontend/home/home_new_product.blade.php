@@ -75,26 +75,26 @@
                                     </div>
 
                                     @if ($product->vendor_id)
-                                        <div>
-                                            <span class="font-small text-muted">By <a
-                                                    href="vendor-details-1.html">Owner</a></span>
-                                        </div>
+                                    <div>
+                                    <span class="font-small text-muted">By <a href="vendor-details-1.html">Owner</a>
+                                    </span>
+                                    </div>
                                     @else
-                                        <div>
-                                            <span class="font-small text-muted">By <a
-                                            href="vendor-details-1.html">{{ $product['vendor']['name'] }}</a>span>
-                                        </div>
+                                    <div>
+                                    <span class="font-small text-muted">By <a
+                                     href="vendor-details-1.html">{{ $product['vendor']['name'] }}</a>span>
+                                    </div>
                                     @endif
 
                                     <div class="product-card-bottom">
-                                        @if ($product->discount_price == null)
+                                        @if ($product->discount_price == Null)
                                             <div class="product-price">
-                                                <span>${{ $product->selling_price }}</span>
+                                            <span>${{ $product->selling_price }}</span>
                                             </div>
                                         @else
                                             <div class="product-price">
-                                                <span>${{ $product->discount_price }}</span>
-                                                <span class="old-price">${{ $product->selling_price }}</span>
+                                            <span>${{ $product->discount_price }}</span>
+                                            <span class="old-price">${{ $product->selling_price }}</span>
                                             </div>
                                         @endif
 
