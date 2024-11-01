@@ -95,13 +95,8 @@ $featured = App\Models\Product::where('featured',1)->orderBy('id','DESC')->limit
                             </div>
                         </div>
                     </div>
-                    <!--End tab-pane-->
-
-                   
                 </div>
-                <!--End tab-content-->
             </div>
-            <!--End Col-lg-9-->
         </div>
     </div>
 </section>
