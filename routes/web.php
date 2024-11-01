@@ -95,7 +95,6 @@ Route::controller(VendorProductController::class)->group(function(){
     Route::get('/vendor/delete/product/{id}', 'VendorDeleteProduct')->name('vendor.delete.product');
 
     Route::get('/vendor/subcategory/ajax/{category_id}', 'VendorGetSubCategory');
-    
 });
 
 
@@ -109,8 +108,6 @@ Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])
 
 Route::get('/become/vendor', [VendorController::class, 'BecomeVendor'])->name('become.vendor');
 Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->name('vendor.register');
-
-
 
 Route::middleware(['auth','role:admin'])->group(function(){
 
