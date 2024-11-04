@@ -62,8 +62,14 @@ class IndexController extends Controller
         ->where('id','!=',$id)->orderBy('id','DESC')->limit('4')->get();
 
         $multiImage = MultiImg::where('product_id',$id)->get();
-
         return view('frontend.product.product_details',compact('product','product_color','product_size','multiImage','relatedProduct'));
+    } // End Method
+
+    public function VendorDetails($id){
+
+        $vendor = User::findOrFail($id);
+        $vendorProduct = Product::where('vendor_id',$id)->get();
+        return view('frontend.vendor.vendor_details',compact('vendor','vendorProduct'));
 
     } // End Method
 }
