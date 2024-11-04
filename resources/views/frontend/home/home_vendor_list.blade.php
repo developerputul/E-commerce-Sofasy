@@ -28,7 +28,7 @@ $vendors = App\Models\User::where('status','active')->where('role','vendor')->or
                         <span class="hot">Mall</span>
                     </div>
                 </div>
-                <div class="vendor-content-wrap">
+                <div class="vendor-content-wrap"> 
                     <div class="d-flex justify-content-between align-items-end mb-30">
                         <div>
                         <div class="product-category">

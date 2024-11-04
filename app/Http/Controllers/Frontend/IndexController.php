@@ -11,8 +11,7 @@ use App\Models\MultiImg;
 use App\Models\Product;
 use App\Models\User;
 
-class IndexController extends Controller
-{
+class IndexController extends Controller {
 
     public function Index(){
         $skip_category_0 = Category::skip(0)->first();
@@ -77,6 +76,14 @@ class IndexController extends Controller
 
         $vendors = User::where('status','active')->where('role','vendor')->orderBy('id','DESC')->get();
         return view('frontend.vendor.vendor_all',compact('vendors'));
+    } // End Method
 
+    public function CatwiseProduct(Request $request,$id,$slug){
+
+        $products = Product::where('status',1)->where('category_id',$id)->orderBy('id','DESC')->get();
+        $categories = Category::orderBy('category_name','ASC')->get();
+        $breadcat = Category::where('id',$id)->first();
+
+        return view('frontend.product.category_view',compact('products','categories','breadcat'));
     } // End Method
 }

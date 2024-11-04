@@ -1,6 +1,5 @@
+
 <header class="header-area header-style-1 header-height-2">
-
-
     <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
         <div class="container">
             <div class="header-wrap">
@@ -161,15 +160,14 @@
 
 
     @php
-        $categories = App\Models\Category::orderBy('category_name', 'ASC')->get();
+    $categories = App\Models\Category::orderBy('category_name', 'ASC')->get();
     @endphp
 
     <div class="header-bottom header-bottom-bg-color sticky-bar">
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}"
-                            alt="logo" /></a>
+                    <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
                 </div>
 
                 <div class="header-nav d-none d-lg-flex">
@@ -200,7 +198,7 @@
                                 </ul>
                             </div>
 
-                            {{-- <div class="more_slide_open" style="display: none">
+                            <div class="more_slide_open" style="display: none">
                                 <div class="d-flex categori-dropdown-inner">
                                     <ul>
                                         <li>
@@ -227,7 +225,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div> --}}
+                            </div>
                             <div class="more_categories"><span class="icon"></span> <span class="heading-sm-1">Show
                                 more...</span>
                             </div>
@@ -247,7 +245,7 @@
 
                                 @foreach ($categories as $category)
                             <li>
-                                <a href="#">{{ $category->category_name }} <i class="fi-rs-angle-down"></i></a>
+                                <a href="{{ url('product/category/'.$category->id.'/'.$category->category_slug) }}">{{ $category->category_name }} <i class="fi-rs-angle-down"></i></a>
                             @php
                             $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderBy('subcategory_name', 'ASC')->get();
                             @endphp
