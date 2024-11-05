@@ -237,13 +237,13 @@
                         <nav>
                             <ul>
                                 <li>
-                                    <a class="active" href="index.html">Home </a>
+                                    <a class="active" href="{{ url('/') }}">Home </a>
                                 </li>
                             @php
-                                $categories = App\Models\Category::orderBy('category_name', 'ASC')->limit(6)->get();
+                                $categories = App\Models\Category::orderBy('category_name', 'ASC')->limit(10)->get();
                             @endphp
 
-                                @foreach ($categories as $category)
+                        @foreach ($categories as $category)
                             <li>
                                 <a href="{{ url('product/category/'.$category->id.'/'.$category->category_slug) }}">{{ $category->category_name }} <i class="fi-rs-angle-down"></i></a>
                             @php
@@ -251,11 +251,11 @@
                             @endphp
                                 <ul class="sub-menu">
                                     @foreach ($subcategories as $subcategory)
-                                    <li><a href="vendors-grid.html">V{{ $subcategory->subcategory_name }}</a></li>
+                                <li><a href="{{ url('product/subcategory/'.$subcategory->id.'/'.$subcategory->subcategory_slug) }}">{{ $subcategory->subcategory_name }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
-                                @endforeach
+                        @endforeach
 
                                 <li>
                                     <a href="page-contact.html">Contact</a>

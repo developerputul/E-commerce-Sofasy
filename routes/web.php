@@ -202,3 +202,4 @@ Route::get('/vendor/details/{id}',[IndexController::class, 'VendorDetails'])->na
 Route::get('/vendor/all',[IndexController::class, 'VendorAll'])->name('vendor.all');
 
 Route::get('/product/category/{id}/{slug}',[IndexController::class, 'CatwiseProduct']);
+Route::get('/product/subcategory/{id}/{slug}',[IndexController::class, 'SubCatwiseProduct']);
