@@ -84,7 +84,7 @@
                     @if ($product->product_size == null)
                     @else
                         <div class="attr-detail attr-size mb-30">
-                            <strong class="mr-10" style="width: 50px;">Size : </strong>
+                            <strong class="mr-10" style="width: 50px;">Choose Size : </strong>
                             <select class="form-control unicase-form-control" id="size">
                                 <option selected="" disabled="">--Choose Size--</option>
                                 @foreach ($product_size as $size)
@@ -98,7 +98,7 @@
                     @if ($product->product_color == null)
                     @else
                         <div class="attr-detail attr-size mb-30">
-                            <strong class="mr-10" style="width: 50px;">Color : </strong>
+                            <strong class="mr-10" style="width: 50px;">Choose Color : </strong>
                             <select class="form-control unicase-form-control" id="size">
                                 <option selected="" disabled="">--Choose Color--</option>
                                 @foreach ($product_color as $color)
