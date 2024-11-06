@@ -107,17 +107,42 @@
                 } // end else
 
                 //Start Stock Option
+
                 if (data.product.product_qty > 0) {
                     $('#aviable').text('');
                     $('#stockout').text('');
-                    $('#aviable').text(aviable);
-                } else {
+                    $('#aviable').text('aviable');
+                }else{
                     $('#aviable').text('');
                     $('#stockout').text('');
-                    $('#stockout').text(stockout);
+                    $('#stockout').text('stockout');
                 }
+                //End Stock Option
 
-                //End Start Stock Option
+                //Size Option
+                $('select[name="size"]').empty();
+                $.each(data.size,function(key,value){
+                    $('select[name="size"]').append('<option value=" '+value+' ">'+value+'</option> ')
+
+                    if (data.size == "") {
+                        $('#sizeArea').hide();
+                    }else{
+                        $('#sizeArea').show();
+                    }
+                }) // end size
+
+                //color Option
+                $('select[name="color"]').empty();
+                $.each(data.color,function(key,value){
+                    $('select[name="color"]').append('<option value=" '+value+' ">'+value+'</option> ')
+
+                    if (data.color == "") {
+                        $('#colorArea').hide();
+                    }else{
+                        $('#colorArea').show();
+                    }
+                }) // end color
+
             }
         })
     }
