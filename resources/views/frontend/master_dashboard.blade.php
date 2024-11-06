@@ -105,6 +105,14 @@
                     $('#pprice').text(data.product.discount_price);
                     $('#oldprice').text(data.product.selling_price);
                 } // end else
+
+                //Start Stock Option
+                if (data.product.product_qty > 0) {
+                    $('#pprice').text('');
+                    $('#oldprice').text('');
+                    $('#pprice').text(data.product.selling_price);
+                }
+                // End Start Stock Option
             }
         })
     }
