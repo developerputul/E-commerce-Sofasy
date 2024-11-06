@@ -108,11 +108,16 @@
 
                 //Start Stock Option
                 if (data.product.product_qty > 0) {
-                    $('#pprice').text('');
-                    $('#oldprice').text('');
-                    $('#pprice').text(data.product.selling_price);
+                    $('#aviable').text('');
+                    $('#stockout').text('');
+                    $('#aviable').text(aviable);
+                } else {
+                    $('#aviable').text('');
+                    $('#stockout').text('');
+                    $('#stockout').text(stockout);
                 }
-                // End Start Stock Option
+
+                //End Start Stock Option
             }
         })
     }

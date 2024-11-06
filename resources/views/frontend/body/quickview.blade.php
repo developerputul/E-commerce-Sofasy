@@ -65,10 +65,10 @@
                                     <div class="font-xs">
                                         <ul>
                                             <li class="mb-5">Product Code: <span class="text-brand" id="pcode"></span></li>
-                                            <li class="mb-5">Stock:<span class="badge badge-pill badge-success"
-                                             id="aviable" style="background: green; color: white;"></span>
-                                             <span class="badge badge-pill badge-danger"
-                                             id="stockout" style="background: red; color: white;"></span></li>
+                                            <li class="mb-5">Stock:
+                                            <span class="badge badge-pill badge-success" id="aviable" style="background: green; color: white"></span>
+                                             <span class="badge badge-pill badge-danger" id="stockout" style="background: red; color: white"></span>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div> <!---end col--->
