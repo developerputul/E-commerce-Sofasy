@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\CartController;
 
 
 /*
@@ -205,3 +206,6 @@ Route::get('/product/subcategory/{id}/{slug}',[IndexController::class, 'SubCatwi
 
 //Product View Modal with Ajax
 Route::get('/product/view/modal/{id}',[IndexController::class, 'ProductViewAjax']);
+
+//Add To Cart Stor Date
+Route::post('/cart/data/store/{id}',[CartController::class, 'AddToCart']);
