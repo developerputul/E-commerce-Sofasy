@@ -69,7 +69,7 @@
     <!-- Template  JS -->
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     <script src="{{asset('frontend/assets/js/main.js?v=5.3')}}"></script>
     <script src="{{asset('frontend/assets/js/shop.js?v=5.3')}}"></script>
 
@@ -199,6 +199,20 @@
         })
     }
     //End Add To Cart Product
+</script>
+
+<script type="text/javascript">
+
+    function miniCart(){
+        $.ajax({
+            type: 'GET',
+            url: '/product/mini/cart',
+            dataType: 'json',
+            success:function(response){
+                console.log(response)
+            }
+        })
+    }
 
 </script>
 
