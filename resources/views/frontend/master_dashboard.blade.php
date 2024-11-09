@@ -170,6 +170,7 @@
             },
             url: "/cart/data/store/"+id,
             success:function(data){
+                miniCart();
                 $('#closeModal').click(); 
                 // console.log(data)
 
@@ -212,6 +213,8 @@
                 // console.log(response)
 
                 var miniCart = ""
+                $('span[id="cartSubTotal"]').text(response.cartTotal);
+                $('#cartQty').text(response.cartQty);
 
                 $.each(response.carts,function(key,value){
                     miniCart += `<ul>
