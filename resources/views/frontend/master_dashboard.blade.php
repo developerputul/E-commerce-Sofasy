@@ -325,10 +325,50 @@
                 }
             })
         }
-      
-
         // miniCart Remove End
 </script>
+ <!-- Start Add To Wishlist Product -->
+    <script type="text/javascript">
+
+        function addToWishList(product_id){
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                url: "/add-to-wishlist/"+product_id,
+
+                success:function(data){
+
+                     //Start Message
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: "success",
+                        title: data.success,
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: "error",
+                        title: data.error,
+                    })
+                }
+            //End Message
+
+                }
+            })
+        }
+
+    </script>
+ <!-- End Add To Wishlist Product -->
 
 </body>
 </html>

@@ -17,7 +17,7 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
-
+use App\Http\Controllers\User\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -218,3 +218,6 @@ Route::get('/minicart/product/remove/{rowId}',[CartController::class, 'MiniCartR
 
 //Add To Cart Stor Date For product Details page
 Route::post('/dcart/data/store/{id}',[CartController::class, 'AddToCartDetails']);
+
+//Add To WishList Product
+Route::post('/add-to-wishlist/{product_id}',[WishlistController::class, 'AddToWishList']);
