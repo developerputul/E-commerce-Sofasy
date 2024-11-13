@@ -215,3 +215,6 @@ Route::get('/product/mini/cart',[CartController::class, 'AddMiniCart']);
 
 //Get Data from MiniCart
 Route::get('/minicart/product/remove/{rowId}',[CartController::class, 'MiniCartRemove']);
+
+//Add To Cart Stor Date For product Details page
+Route::post('/dcart/data/store/{id}',[CartController::class, 'AddToCartDetails']);
