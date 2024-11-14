@@ -206,18 +206,25 @@ Route::get('/product/subcategory/{id}/{slug}',[IndexController::class, 'SubCatwi
 
 //Product View Modal with Ajax
 Route::get('/product/view/modal/{id}',[IndexController::class, 'ProductViewAjax']);
-
 //Add To Cart Stor Date
 Route::post('/cart/data/store/{id}',[CartController::class, 'AddToCart']);
-
 //Get Data from MiniCart
 Route::get('/product/mini/cart',[CartController::class, 'AddMiniCart']);
 
 //Get Data from MiniCart
 Route::get('/minicart/product/remove/{rowId}',[CartController::class, 'MiniCartRemove']);
-
 //Add To Cart Stor Date For product Details page
 Route::post('/dcart/data/store/{id}',[CartController::class, 'AddToCartDetails']);
-
 //Add To WishList Product
 Route::post('/add-to-wishlist/{product_id}',[WishlistController::class, 'AddToWishList']);
+
+
+//User All Route
+Route::middleware(['auth','role:user'])->group(function(){
+
+//All WishList Route
+   Route::controller(WishlistController::class)->group(function(){
+    Route::get('/wishlist', 'AllWishList')->name('wishlist');
+   
+});
+}); //End User Middleware
