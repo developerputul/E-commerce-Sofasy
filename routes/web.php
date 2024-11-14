@@ -219,12 +219,15 @@ Route::post('/dcart/data/store/{id}',[CartController::class, 'AddToCartDetails']
 Route::post('/add-to-wishlist/{product_id}',[WishlistController::class, 'AddToWishList']);
 
 
+
+
 //User All Route
 Route::middleware(['auth','role:user'])->group(function(){
-
 //All WishList Route
    Route::controller(WishlistController::class)->group(function(){
+
     Route::get('/wishlist', 'AllWishList')->name('wishlist');
+    Route::get('/get-wishlist-product', 'GetWishlistProduct');
    
 });
 }); //End User Middleware
