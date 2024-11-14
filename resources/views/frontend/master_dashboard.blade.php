@@ -340,6 +340,7 @@
 
                 success:function(data){
 
+                    WishList();
                      //Start Message
                 const Toast = Swal.mixin({
                     toast: true,
@@ -384,6 +385,7 @@
 
                 success:function(response){
 
+                    $('#wishQty').text(response.wishQty);
                     var rows = ""
                     $.each(response.wishlist, function(key,value){
 
@@ -419,7 +421,7 @@
                                 </td>
 
                                 <td class="action text-center" data-title="Remove">
-                                    <a href="#" class="text-body"><i class="fi-rs-trash"></i></a>
+                                    <a type="submit" class="text-body" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fi-rs-trash"></i></a>
                                 </td>
                             </tr>`
 
@@ -430,8 +432,50 @@
             })
         }
         WishList();
+        // <!-- End Load Wishlist Data -->
+
+        //Wishlist Remove Start
+        function wishlistRemove(id){
+            $.ajax({
+                type: "GET",
+                dataType: 'json',
+                url: "/wishlist-remove/"+id,
+
+                success:function(data){
+                    WishList();
+                     //Start Message
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: "success",
+                        title: data.success,
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: "error",
+                        title: data.error,
+                    })
+                }
+            //End Message
+
+                }
+            })
+        }
+
+        //Wishlist Remove End
+
     </script>
- <!-- End Load Wishlist Data -->
+
 
 
 </body>
