@@ -17,6 +17,7 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\User\WishlistController;
 
 /*
@@ -206,17 +207,24 @@ Route::get('/product/subcategory/{id}/{slug}',[IndexController::class, 'SubCatwi
 
 //Product View Modal with Ajax
 Route::get('/product/view/modal/{id}',[IndexController::class, 'ProductViewAjax']);
+
 //Add To Cart Stor Date
 Route::post('/cart/data/store/{id}',[CartController::class, 'AddToCart']);
+
 //Get Data from MiniCart
 Route::get('/product/mini/cart',[CartController::class, 'AddMiniCart']);
 
 //Get Data from MiniCart
 Route::get('/minicart/product/remove/{rowId}',[CartController::class, 'MiniCartRemove']);
+
 //Add To Cart Stor Date For product Details page
 Route::post('/dcart/data/store/{id}',[CartController::class, 'AddToCartDetails']);
+
 //Add To WishList Product
 Route::post('/add-to-wishlist/{product_id}',[WishlistController::class, 'AddToWishList']);
+
+//Add To Compare 
+Route::post('/add-to-compare/{product_id}',[CompareController::class, 'AddToCompare']);
 
 
 

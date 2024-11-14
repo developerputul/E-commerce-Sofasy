@@ -376,7 +376,6 @@
 
  <!-- Start Load  Wishlist Data -->
     <script type="text/javascript">
-
         function WishList(){
             $.ajax({
                 type: "GET",
@@ -467,14 +466,55 @@
                     })
                 }
             //End Message
+                }
+            })
+        }
+        //Wishlist Remove End
+    </script>
+
+
+    <!-- Start Add To Compare  -->
+    <script type="text/javascript">
+
+        function addToCompare(product_id){
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                url: "/add-to-compare/"+product_id,
+
+                success:function(data){
+                    
+                     //Start Message
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: "success",
+                        title: data.success,
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: "error",
+                        title: data.error,
+                    })
+                }
+            //End Message
 
                 }
             })
         }
 
-        //Wishlist Remove End
-
     </script>
+ <!-- End Add To Compare -->
 
 
 
