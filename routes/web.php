@@ -199,6 +199,8 @@ Route::controller(BannerController::class)->group(function(){
 //All Banner Route
 Route::controller(CouponController::class)->group(function(){
     Route::get('/all/coupon', 'AllCoupon')->name('all.coupon');
+    Route::get('/add/coupon', 'AddCoupon')->name('add.coupon');
+    Route::post('/store/coupon', 'StoreCoupon')->name('store.coupon');
    
 });
 
