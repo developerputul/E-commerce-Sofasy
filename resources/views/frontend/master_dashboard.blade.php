@@ -250,6 +250,7 @@
 
 </script>
 
+<!--Start Minicart -->
 <script type="text/javascript">
 
     function miniCart(){
@@ -260,11 +261,13 @@
             success:function(response){
                 // console.log(response)
 
-                var miniCart = ""
+                
                 $('span[id="cartSubTotal"]').text(response.cartTotal);
                 $('#cartQty').text(response.cartQty);
 
-                $.each(response.carts,function(key,value){
+                var miniCart = ""
+
+                $.each(response.carts, function(key,value){
                     miniCart += `<ul>
                                 <li>
                                     <div class="shopping-cart-img">
@@ -628,7 +631,75 @@
 </script>
 
 
+<!--Start Load My Cart-->
+<script type="text/javascript">
 
+        function cart(){
+                $.ajax({
+                    type: 'GET',
+                    url: '/get-cart-product',
+                    dataType: 'json',
+                    success:function(response){
+                        // console.log(response)
+
+                        var rows = ""   
+
+                        $.each(response.carts, function(key,value){
+                            rows += `<tr class="pt-30">
+                                <td class="custome-checkbox pl-30">
+                                </td>
+                                <td class="image product-thumbnail pt-40"><img src="/${value.options.image}" alt="#"></td>
+                                <td class="product-des product-name">
+                                    <h6 class="mb-5"><a class="product-name mb-10 text-heading"
+                                         href="shop-product-right.html">${value.name}</a></h6>
+                                
+                                </td>
+                                <td class="price" data-title="Price">
+                                    <h4 class="text-body">$${value.price} </h4>
+                                </td>
+
+                                <td class="color" data-title="Color">
+                                    ${value.options.color == null
+                                    ? `<span>.... </span>`
+                                    : `<h6 class="text-body">${value.options.color} </h6>`
+                                    }
+                                    
+                                </td>
+                                
+                                <td class="size" data-title="Size">
+                                    ${value.options.size == null
+                                    ? `<span>.... </span>`
+                                    : `<h6 class="text-body">${value.options.size} </h6>`
+                                    }
+                                    
+                                </td>
+
+                                <td class="text-center detail-info" data-title="Stock">
+                                    <div class="detail-extralink mr-15">
+                                        <div class="detail-qty border radius">
+                                            <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+
+                                            <input type="text" name="quantity" class="qty-val" value="${value.qty}" min="1">
+
+                                            <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="price" data-title="Price">
+                                    <h4 class="text-brand">$${value.subtotal} </h4>
+                                </td>
+                                <td class="action text-center" data-title="Remove"><a href="#" class="text-body">
+                                <i class="fi-rs-trash"></i></a></td>
+                            </tr> `
+                        });
+                        $('#cartPage').html(rows);
+                    }
+                })
+            }
+            cart();
+</script>
+<!--End Load My Cart-->
 
 </body>
 </html>
