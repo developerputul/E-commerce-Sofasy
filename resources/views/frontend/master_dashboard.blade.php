@@ -677,11 +677,14 @@
                                 <td class="text-center detail-info" data-title="Stock">
                                     <div class="detail-extralink mr-15">
                                         <div class="detail-qty border radius">
-                                            <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
 
-                                            <input type="text" name="quantity" class="qty-val" value="${value.qty}" min="1">
+                                        <a type="submit" class="qty-down" id="${value.rowId}" onclick="cartDecrement(this.id)">
+                                        <i class="fi-rs-angle-small-down"></i></a>
 
-                                            <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                        <input type="text" name="quantity" class="qty-val" value="${value.qty}" min="1">
+
+                                        <a type="submit" class="qty-up"><i class="fi-rs-angle-small-up"
+                                         id="${value.rowId}" onclick="cartIncrement(this.id)"></i></a>
 
                                         </div>
                                     </div>
@@ -741,6 +744,38 @@
             })
         }
          //End Remove Cart
+
+         // Cart Increment//
+         function cartIncrement(rowId){
+            $.ajax({
+                type: 'GET',
+                url: "/cart-increment/"+rowId,
+                dataType: 'json',
+
+                success:function(data){
+                    cart();
+                    miniCart();
+                }
+            });
+         }
+
+         //End Increment Cart
+
+         // Cart Decrement
+         function cartDecrement(rowId){
+            $.ajax({
+                type: 'GET',
+                url: "/cart-decrement/"+rowId,
+                dataType: 'json',
+
+                success:function(data){
+                    cart();
+                    miniCart();
+                }
+            });
+         }
+
+         //End Decrement Cart
 
 </script>
 <!--End Load My Cart-->
