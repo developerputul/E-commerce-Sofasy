@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -184,7 +185,7 @@ Route::controller(SliderController::class)->group(function(){
     Route::get('/delete/slider{id}', 'DeleteSlider')->name('delete.slider');
 });
 
-//All Slider Route
+//All Banner Route
 Route::controller(BannerController::class)->group(function(){
     Route::get('/all/banner', 'AllBanner')->name('all.banner');
     Route::get('/add/banner', 'AddBanner')->name('add.banner');
@@ -192,6 +193,13 @@ Route::controller(BannerController::class)->group(function(){
     Route::get('/edit/banner/{id}', 'EditBanner')->name('edit.banner');
     Route::post('/update/banner', 'UpdateBanner')->name('update.banner');
     Route::get('/delete/banner{id}', 'DeleteBanner')->name('delete.banner');
+});
+
+
+//All Banner Route
+Route::controller(CouponController::class)->group(function(){
+    Route::get('/all/coupon', 'AllCoupon')->name('all.coupon');
+   
 });
 
 
@@ -248,7 +256,6 @@ Route::middleware(['auth','role:user'])->group(function(){
     
 });
 
-
 //Cart All  Route
    Route::controller(CartController::class)->group(function(){
 
@@ -257,8 +264,6 @@ Route::middleware(['auth','role:user'])->group(function(){
     Route::get('/cart-remove/{rowId}', 'CartRemove');
     Route::get('/cart-decrement/{rowId}', 'CartDecrement');
     Route::get('/cart-increment/{rowId}', 'CartIncrement');
-  
-    
 });
 
 
