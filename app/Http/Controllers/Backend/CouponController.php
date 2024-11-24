@@ -37,4 +37,11 @@ class CouponController extends Controller
         return redirect()->route('all.coupon')->with($notification);
 
     } // End Method
+
+    public function EditCoupon($id){
+
+        $coupon = Coupon::findorFail($id);
+        return view('backend.coupon.edit_coupon',compact('coupon'));
+
+    } // End Method
 }
