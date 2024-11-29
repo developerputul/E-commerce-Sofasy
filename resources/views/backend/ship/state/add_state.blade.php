@@ -27,7 +27,7 @@
                     <div class="col-lg-10">
                         <div class="card">
                             <div class="card-body">
-                                <form id="myForm" method="POST" action="{{ route('store.district') }}">
+                                <form id="myForm" method="POST" action="{{ route('store.state') }}">
                                     @csrf
 
                                     <div class="row mb-3">

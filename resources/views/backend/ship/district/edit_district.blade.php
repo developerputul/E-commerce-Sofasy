@@ -40,7 +40,7 @@
                                     <option selected="">Selete Division Name</option>
                                     @foreach ($divisions as $division)
                                         <option
-                                            value="{{ $division->id }}"{{ $division->id == $district->division_id ? 'selected' : '' }}>
+                                            value="{{ $division->id }}" {{ $division->id == $district->division_id ? 'selected' : '' }}>
                                             {{ $division->division_name }}</option>
                                     @endforeach
                                 </select>
