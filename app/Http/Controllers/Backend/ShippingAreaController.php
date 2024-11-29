@@ -94,4 +94,39 @@ class ShippingAreaController extends Controller
 
        return redirect()->route('all.district')->with($notification);
     }// End Method 
+
+    public function EditDistrict($id){
+
+        $divisions = ShipDivision::orderBy('division_name','ASC')->get();
+        $district = ShipDistrict::findOrFail($id);
+        return view('backend.ship.district.edit_district',compact('district','divisions'));
+    }// End Method
+
+    public function UpdateDistrict(Request $request){
+
+        $district_id = $request->id;
+
+        ShipDistrict::findOrfail($district_id)->update([
+            'division_id' => $request->division_id,
+            'district_name' => $request->district_name,
+        ]);
+
+        $notification = array(
+            'message' => 'ShipDistrict Updated Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('all.district')->with($notification);
+
+    }// End Method
+
+    public function DeleteDistrict($id){
+
+        ShipDistrict::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'ShipDistrict Deleted Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }// End Method
 }
