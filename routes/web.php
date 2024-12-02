@@ -279,6 +279,9 @@ Route::post('/add-to-compare/{product_id}',[CompareController::class, 'AddToComp
 //Frontend Apply Coupon Option
 Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
 
+//Frontend Coupon Calculation Option
+Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
+
 
 
 

@@ -784,7 +784,7 @@
 <!--=====================Start Apply Coupon===========================-->
 <script type="text/javascript">
 
-function applyCoupon(id){
+function applyCoupon(){
     var coupon_name = $('#coupon_name').val();
             $.ajax({
                 type: "POST",
@@ -822,9 +822,27 @@ function applyCoupon(id){
                     })
                 }
             //End Message
-                }
-            })
             }
+        })
+    }
+
+    //=====================Start Coupon Calculation Method================
+
+    function applyCoupon(){
+        $.ajax({
+            type: 'GET',
+            url: "/coupon-calculation",
+            dataType: 'json',
+            success:function(data){
+                
+            }
+        })
+
+    }
+ //=====================End Coupon Calculation Method================
+
+
+
 
 </script>
 <!--=====================End Apply Coupon===========================-->
