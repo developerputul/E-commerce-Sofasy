@@ -923,7 +923,7 @@ function applyCoupon(){
 
             success:function(data){
                 CouponCalculation();
-                $('#couponCalField').show();
+                $('#couponField').show();
             
                 //Start Message
             const Toast = Swal.mixin({
