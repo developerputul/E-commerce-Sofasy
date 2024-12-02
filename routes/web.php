@@ -282,6 +282,9 @@ Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
 //Frontend Coupon Calculation Option
 Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
 
+//Frontend Coupon Remove Option
+Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
+
 
 
 
