@@ -793,6 +793,10 @@ function applyCoupon(id){
                 url: "coupon-apply",
 
                 success:function(data){
+
+                    if (data.validity == true) {
+                        $('#couponField').hide();
+                    }
                 
                     //Start Message
                 const Toast = Swal.mixin({
