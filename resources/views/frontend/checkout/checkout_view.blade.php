@@ -24,7 +24,8 @@
 
                 <div class="row">
                     <h4 class="mb-30">Billing Details</h4>
-                    <form method="post">
+                <form method="post" action="{{ route('checkout.store') }}">
+                    @csrf
 
                         <div class="row">
                             <div class="form-group col-lg-6">
@@ -82,8 +83,6 @@
                         <div class="form-group mb-30">
                             <textarea rows="5" placeholder="Additional information" name="notes"></textarea>
                         </div>
-
-                    </form>
                 </div>
             </div>
 
@@ -185,37 +184,44 @@
                 <div class="payment ml-30">
                     <h4 class="mb-30">Payment</h4>
                     <div class="payment_option">
+
                         <div class="custome-radio">
                             <input class="form-check-input" required="" type="radio" name="payment_option"
-                                id="exampleRadios3" checked="">
+                            value="stripe" id="exampleRadios3" checked="">
+
                             <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse"
-                                data-target="#bankTranfer" aria-controls="bankTranfer">Direct Bank Transfer</label>
+                                data-target="#bankTranfer" aria-controls="bankTranfer">Stripe</label>
                         </div>
+
                         <div class="custome-radio">
                             <input class="form-check-input" required="" type="radio" name="payment_option"
-                                id="exampleRadios4" checked="">
+                            value="cash" id="exampleRadios4" checked="">
+
                             <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse"
                                 data-target="#checkPayment" aria-controls="checkPayment">Cash on delivery</label>
                         </div>
                         <div class="custome-radio">
-                            <input class="form-check-input" required="" type="radio" name="payment_option"
+                            <input class="form-check-input" value="card" required="" type="radio" name="payment_option"
                                 id="exampleRadios5" checked="">
+
                             <label class="form-check-label" for="exampleRadios5" data-bs-toggle="collapse"
                                 data-target="#paypal" aria-controls="paypal">Online Getway</label>
                         </div>
                     </div>
                     <div class="payment-logo d-flex">
-                        <img class="mr-15" src="assets/imgs/theme/icons/payment-paypal.svg" alt="">
-                        <img class="mr-15" src="assets/imgs/theme/icons/payment-visa.svg" alt="">
-                        <img class="mr-15" src="assets/imgs/theme/icons/payment-master.svg" alt="">
-                        <img src="assets/imgs/theme/icons/payment-zapper.svg" alt="">
+                        <img class="mr-15" src="{{ asset('frontend/assets/imgs/theme/icons/payment-paypal.svg') }}" alt="">
+                        <img class="mr-15" src="{{ asset('frontend/assets/imgs/theme/icons/payment-visa.svg') }}" alt="">
+                        <img class="mr-15" src="{{ asset('frontend/assets/imgs/theme/icons/payment-master.svg') }}" alt="">
+                        <img src="{{ asset('frontend/assets/imgs/theme/icons/payment-zapper.svg') }}" alt="">
                     </div>
-                    <a href="#" class="btn btn-fill-out btn-block mt-30">Place an Order<i
-                            class="fi-rs-sign-out ml-15"></i></a>
+                    <button type="submit" class="btn btn-fill-out btn-block mt-30">Place an Order<i
+                         class="fi-rs-sign-out ml-15"></i></button>
                 </div>
             </div>
         </div>
     </div>
+
+</form>
 
 
     <script type="text/javascript">
