@@ -285,6 +285,9 @@ Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
 //Frontend Coupon Remove Option
 Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
 
+// Coupon ChoutOut Option
+Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
+
 
 
 
