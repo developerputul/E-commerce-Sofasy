@@ -119,6 +119,17 @@
                         <div class="form-row">
                             <label for="card-element">
                             Credit or debit card
+
+                            <input type="hidden" name="name" value="{{ $data['shipping_name'] }}">
+                            <input type="hidden" name="email" value="{{ $data['shipping_email'] }}">
+                            <input type="hidden" name="phone" value="{{ $data['shipping_phone'] }}">
+                            <input type="hidden" name="post_code" value="{{ $data['post_code'] }}">
+
+                            <input type="hidden" name="division_id" value="{{ $data['division_id'] }}">
+                            <input type="hidden" name="district_id" value="{{ $data['district_id'] }}">
+                            <input type="hidden" name="state_id" value="{{ $data['state_id'] }}">
+                            <input type="hidden" name="address" value="{{ $data['shipping_address'] }}">
+                            <input type="hidden" name="notes" value="{{ $data['notes'] }}">
                             </label>
                              
                             <div id="card-element">
@@ -143,7 +154,7 @@
 
     <script type="text/javascript">
         // Create a Stripe client.
-var stripe = Stripe                         ('pk_test_51IUTWzALc6pn5BvMAUegqRHV0AAokjG7ZuV6RWcj5rxB9KCAwamgtWpw9T4maGAe34WmDkD6LSn1Yge3nzex6gYk004pILHsNh');
+     var stripe = Stripe('pk_test_51IUTWzALc6pn5BvMAUegqRHV0AAokjG7ZuV6RWcj5rxB9KCAwamgtWpw9T4maGAe34WmDkD6LSn1Yge3nzex6gYk004pILHsNh');
     // Create an instance of Elements.
     var elements = stripe.elements();
     // Custom styling can be passed to options when creating an Element.
