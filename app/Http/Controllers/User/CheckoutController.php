@@ -50,7 +50,6 @@ class CheckoutController extends Controller
         }else{
             return view('frontend.payment.cash',compact('data','cartTotal'));
         }
-
-
     }// End Method
+
 }

@@ -21,6 +21,7 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CompareController;
+use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\WishlistController;
 
 /*
@@ -311,6 +312,14 @@ Route::middleware(['auth','role:user'])->group(function(){
     Route::get('/wishlist-remove/{id}', 'WishlistRemove');
 });
 
+//All WishList Route
+Route::controller(CompareController::class)->group(function(){
+
+    Route::get('/compare', 'AllCompare')->name('compare');
+    Route::get('/get-compare-product', 'GetCompareProduct');
+    Route::get('/compare-remove/{id}', 'CompareRemove');
+    
+});
 
 //Checkout All Route
    Route::controller(CheckoutController::class)->group(function(){
@@ -320,16 +329,13 @@ Route::middleware(['auth','role:user'])->group(function(){
     Route::post('/checkout/store', 'CheckoutStore')->name('checkout.store');
 });
 
-
-
-//All WishList Route
-   Route::controller(CompareController::class)->group(function(){
-
-    Route::get('/compare', 'AllCompare')->name('compare');
-    Route::get('/get-compare-product', 'GetCompareProduct');
-    Route::get('/compare-remove/{id}', 'CompareRemove');
-    
+//Stripe All Route
+   Route::controller(StripeController::class)->group(function(){
+    Route::post('/stripe/order', 'StripeOrder')->name('stripe.order');
 });
+
+
+
 
 
 }); //End User Middleware
