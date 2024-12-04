@@ -108,6 +108,7 @@ class IndexController extends Controller {
         $product_size = explode(',',$size);
 
         return response()->json(array(
+            
             'product' => $product,
             'color' => $product_color,
             'size' => $product_size,
