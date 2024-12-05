@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderMail;
 use Illuminate\Http\Request;
 use Stripe\Charge;
 use App\Models\Coupon;
@@ -12,7 +13,8 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Mail;
+use Stripe\Invoice;
 class StripeController extends Controller
 {
     public function StripeOrder(Request $request){
@@ -129,6 +131,21 @@ class StripeController extends Controller
             'status' => 'pending',
             'created_at' => Carbon::now(),  
         ]);
+
+        //Start Sen Email
+        $invoice = Order::findOrFail($order_id);
+
+        $data = [
+
+            'invoice_no' => $invoice->invoice_no,
+            'amount' => $total_amount,
+            'name' => $invoice->name,
+            'email' => $invoice->email,
+        ];
+
+        Mail::to($request->email)->send(new OrderMail($data));
+
+        //End Sen Email
 
         $carts = Cart::content();
         
