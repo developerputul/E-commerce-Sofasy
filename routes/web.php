@@ -21,6 +21,7 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\User\StripeController;
@@ -345,6 +346,13 @@ Route::controller(CompareController::class)->group(function(){
    Route::controller(StripeController::class)->group(function(){
     Route::post('/stripe/order', 'StripeOrder')->name('stripe.order');
     Route::post('/cash/order', 'CashOrder')->name('cash.order');
+});
+
+
+// User Dashboard All route
+   Route::controller(AllUserController::class)->group(function(){
+    Route::get('/user/account/page', 'UserAccountPage')->name('user.account.page');
+
 });
 
 
