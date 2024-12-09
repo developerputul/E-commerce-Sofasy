@@ -14,6 +14,15 @@ class AllUserController extends Controller
     $id = Auth::user()->id;
     $userData = User::find($id);
     return view('frontend.userdashboard.account_details',compact('userData'));
-
   } // End Method
+
+  public function UserChangaPassword(){
+
+    return view('frontend.userdashboard.user_change_password');
+  }//End Method
+
+  public function UserOrderPage(){
+
+    return view('frontend.userdashboard.user_order_page');
+  }//End Method
 }

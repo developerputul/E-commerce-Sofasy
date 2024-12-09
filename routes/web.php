@@ -352,6 +352,8 @@ Route::controller(CompareController::class)->group(function(){
 // User Dashboard All route
    Route::controller(AllUserController::class)->group(function(){
     Route::get('/user/account/page', 'UserAccountPage')->name('user.account.page');
+    Route::get('/user/change/password', 'UserChangaPassword')->name('user.change.password');
+    Route::get('/user/order/page', 'UserOrderPage')->name('user.order.page');
 
 });
 
