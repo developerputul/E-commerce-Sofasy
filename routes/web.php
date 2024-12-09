@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
@@ -104,8 +105,14 @@ Route::controller(VendorProductController::class)->group(function(){
     Route::get('/vendor/subcategory/ajax/{category_id}', 'VendorGetSubCategory');
 });
 
+//Vendor Order All Brand Route
+Route::controller(VendorOrderController::class)->group(function(){
+    Route::get('/vendor/order', 'VendorOrder')->name('vendor.order');
+    
+});
 
-});  //End Group Middleware
+
+});  //End Vendor Group Middleware
 
 Route::get('/admin/login',[AdminController::class, 'AdminLogin'])
 ->middleware(RedirectIfAuthenticated::class);
@@ -245,7 +252,7 @@ Route::controller(ShippingAreaController::class)->group(function(){
     Route::get('/district/ajax/{division_id}', 'GetDistrict');
 });
 
-//Shiping State All Route
+//Admin Order All Route
 Route::controller(OrderController::class)->group(function(){
     Route::get('/all/order', 'AllOrder')->name('all.order');
 });
