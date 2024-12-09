@@ -6,7 +6,7 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                <span></span>My Account
+                <span></span>User Order
             </div>
         </div>
     </div>
@@ -16,45 +16,11 @@
                 <div class="col-lg-12 m-auto">
                     <div class="row">
 
-<!--======================Start Col md 3 menu===========================---->
-                        <div class="col-md-3">
-                            <div class="dashboard-menu">
-                                <ul class="nav flex-column" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('dashboard') }}"><i
-                                        class="fi-rs-settings-sliders mr-10"></i>Dashboard</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="{{ route('user.order.page') }}">
-                                        <i class="fi-rs-shopping-bag mr-10"></i>Orders</a>
-                                    </li>
+            {{-- Start Col md 3 menu --}}
 
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#track-orders"><i
-                                        class="fi-rs-shopping-cart-check mr-10"></i>Track Your Order</a>
-                                    </li>
+            @include('frontend.body.dashboard_sidebar_menu')    
 
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#address"><i
-                                        class="fi-rs-marker mr-10"></i>My Address</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('user.account.page') }}"><i class="fi-rs-user mr-10"></i>Account details</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('user.change.password') }}"><i class="fi-rs-user mr-10"></i>Change Password</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('user.logout') }}"><i
-                                        class="fi-rs-sign-out mr-10"></i>Logout</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--======================End Col md 3 menu===========================---->
+            {{-- End Col md 3 menu --}}
 
                         <div class="col-md-9">
                             <div class="tab-content account dashboard-content pl-50">
