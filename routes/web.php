@@ -355,6 +355,8 @@ Route::controller(CompareController::class)->group(function(){
     Route::get('/user/change/password', 'UserChangaPassword')->name('user.change.password');
     Route::get('/user/order/page', 'UserOrderPage')->name('user.order.page');
 
+    Route::get('/user/order_details/{order_id}', 'UserOrderDetails');
+
 });
 
 
