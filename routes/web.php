@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
@@ -242,15 +243,19 @@ Route::controller(ShippingAreaController::class)->group(function(){
     Route::get('/delete/state/{id}', 'DeleteState')->name('delete.state');
 
     Route::get('/district/ajax/{division_id}', 'GetDistrict');
-
-   
 });
 
+//Shiping State All Route
+Route::controller(OrderController::class)->group(function(){
+    Route::get('/all/order', 'AllOrder')->name('all.order');
+});
 
 }); //Admin End Middleware
 
-//Frontend All Details Route
 
+
+
+//Frontend All Details Route
 Route::get('/product/details/{id}/{slug}',[IndexController::class, 'ProductDetails']);
 Route::get('/vendor/details/{id}',[IndexController::class, 'VendorDetails'])->name('vendor.details');
 Route::get('/vendor/all',[IndexController::class, 'VendorAll'])->name('vendor.all');
@@ -334,9 +339,6 @@ Route::controller(CompareController::class)->group(function(){
     Route::post('/stripe/order', 'StripeOrder')->name('stripe.order');
     Route::post('/cash/order', 'CashOrder')->name('cash.order');
 });
-
-
-
 
 
 }); //End User Middleware
