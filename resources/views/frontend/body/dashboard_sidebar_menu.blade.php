@@ -35,7 +35,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('user.logout') }}"><i
+                <a class="nav-link" style="background: #ddd" href="{{ route('user.logout') }}"><i
                 class="fi-rs-sign-out mr-10"></i>Logout</a>
             </li>
         </ul>

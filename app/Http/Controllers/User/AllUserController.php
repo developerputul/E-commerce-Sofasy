@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,8 @@ class AllUserController extends Controller
   }//End Method
 
   public function UserOrderPage(){
-
-    return view('frontend.userdashboard.user_order_page');
+    $id = Auth::user()->id;
+    $orders = Order::where('user_id',$id)->orderBy('id','DESC')->get();
+    return view('frontend.userdashboard.user_order_page',compact('orders'));
   }//End Method
 }
