@@ -1,7 +1,9 @@
 @extends('dashboard')
 @section('user')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     <div class="page-header breadcrumb-wrap">
@@ -18,68 +20,73 @@
                 <div class="col-lg-12 m-auto">
                     <div class="row">
 
-            {{-- Start Col md 3 menu --}}
+                        {{-- Start Col md 3 menu --}}
 
-            @include('frontend.body.dashboard_sidebar_menu')    
+                        @include('frontend.body.dashboard_sidebar_menu')
 
-            {{-- End Col md 3 menu --}}
+                        {{-- End Col md 3 menu --}}
 
-                        <div class="col-md-9">
-                            <div class="tab-content account dashboard-content pl-50">
-                                <div class="tab-pane fade active show" id="dashboard" role="tabpanel"
-                                    aria-labelledby="dashboard-tab">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h3 class="mb-0">Your Orders</h3>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table" style="background: #ddd; font-weight: 600;">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>SL</th>
-                                                            <th>Date</th>
-                                                            <th>Totaly</th>
-                                                            <th>Payment</th>
-                                                            <th>Invoice</th>
-                                                            <th>Status</th>
-                                                            <th>Actions</th>
-                                                        </tr>
-                                                    </thead>
-                                    <tbody>
-                                        @foreach ($orders as $key=> $order)
+        <div class="col-md-9">
+            <div class="tab-content account dashboard-content pl-50">
+                <div class="tab-pane fade active show" id="dashboard" role="tabpanel"
+                    aria-labelledby="dashboard-tab">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="mb-0">Your Orders</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" style="background: #ddd; font-weight: 600;">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $key+1 }}</td>
-                                            <td>{{ $order->order_date }}</td>
-                                            <td>${{ $order->amount }}</td>
-                                            <td>{{ $order->payment_method }}</td>
-                                            <td>{{ $order->invoice_no }}</td>
-
-                                            <td>
-                                        @if ($order->status == 'pending')
-                                        <span class="badge rounded-pill bg-warning">Pending</span> 
-                                        @elseif ($order->status == 'confirm') 
-                                        <span class="badge rounded-pill bg-info">Confirm</span>
-                                        @elseif ($order->status == 'processing') 
-                                        <span class="badge rounded-pill bg-danger">Processing</span>
-                                        @elseif ($order->status == 'delivered') 
-                                        <span class="badge rounded-pill bg-success">Delivered</span>
-                                        @endif        
-                                            </td>
-                                            <td>
-                                                <a href="{{ url('user/order_details/'.$order->id) }}" class="btn-sm btn-success"><i class="fa fa-eye"></i>  View</a>
-                                                <a href="#" class="btn-sm btn-danger"><i class="fa fa-download"></i>  Invoice</a>
-                                            </td>
+                                            <th>SL</th>
+                                            <th>Date</th>
+                                            <th>Totaly</th>
+                                            <th>Payment</th>
+                                            <th>Invoice</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
                                         </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($orders as $key => $order)
+                                            <tr>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{ $order->order_date }}</td>
+                                                <td>${{ $order->amount }}</td>
+                                                <td>{{ $order->payment_method }}</td>
+                                                <td>{{ $order->invoice_no }}</td>
+
+                                                <td>
+                                                    @if ($order->status == 'pending')
+                                                        <span
+                                                            class="badge rounded-pill bg-warning">Pending</span>
+                                                    @elseif ($order->status == 'confirm')
+                                                        <span
+                                                            class="badge rounded-pill bg-info">Confirm</span>
+                                                    @elseif ($order->status == 'processing')
+                                                        <span
+                                                            class="badge rounded-pill bg-danger">Processing</span>
+                                                    @elseif ($order->status == 'delivered')
+                                                        <span
+                                                            class="badge rounded-pill bg-success">Delivered</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                            <a href="{{ url('user/order_details/' . $order->id) }}"
+                                            class="btn-sm btn-success"><i class="fa fa-eye"></i>View</a>
+                                            <a href="{{ url('user/invoice_download/' . $order->id) }}" class="btn-sm btn-danger"><i class="fa fa-download"></i> Invoice</a>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </table>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
                     </div>
