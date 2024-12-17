@@ -155,7 +155,7 @@
                 <div class="menu-title">Order Manage</div>
             </a>
             <ul>
-                <li> <a href="{{ route('all.order') }}"><i class="bx bx-right-arrow-alt"></i>All Order</a>
+                <li> <a href="{{ route('pending.order') }}"><i class="bx bx-right-arrow-alt"></i>Pending</a>
                 </li>
             </ul>
         </li>
