@@ -265,6 +265,8 @@ Route::controller(OrderController::class)->group(function(){
     Route::get('/pending/confirm/{order_id}', 'PendingToConfirm')->name('pending-confirm');
     Route::get('/confirm/processing/{order_id}', 'ConfirmToProcessing')->name('confirm-processing');
     Route::get('/confirm/delivered/{order_id}', 'ProcessingToDelivered')->name('confirm-delivered');
+
+    Route::get('/admin/invoice/download/{order_id}', 'InvoiceDownload')->name('admin.invoice.download');
 });
 
 }); //Admin End Middleware
