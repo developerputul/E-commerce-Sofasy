@@ -31,7 +31,6 @@ $(function(){
   });
 
 //Confirm Order
-
 $(function(){
   $(document).on('click','#confirm',function(e){
       e.preventDefault();
@@ -61,6 +60,69 @@ $(function(){
 });
 
 //End Confirm Order
+
+// Processing Order
+$(function(){
+  $(document).on('click','#processing',function(e){
+      e.preventDefault();
+      var link = $(this).attr("href");
+
+
+                Swal.fire({
+                  title: 'Are you sure to Processing?',
+                  text: "Once Processing, You will be able to pending again?",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, Processing!'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.href = link
+                    Swal.fire(
+                      'processing!',
+                      'Processing Change',
+                      'success'
+                    )
+                  }
+                }) 
+  });
+
+});
+
+//End Processing Order
+
+
+//  Order Delivered
+$(function(){
+  $(document).on('click','#delivered',function(e){
+      e.preventDefault();
+      var link = $(this).attr("href");
+
+
+                Swal.fire({
+                  title: 'Are you sure to Delivered?',
+                  text: "Once Delivered, You will be able to pending again?",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, Delivered!'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.href = link
+                    Swal.fire(
+                      'Delivered!',
+                      'Delivered Change',
+                      'success'
+                    )
+                  }
+                }) 
+  });
+
+});
+
+//End Processing Order
 
 
 
