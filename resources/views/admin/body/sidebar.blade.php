@@ -166,6 +166,21 @@
             </ul>
         </li>
 
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-cart'></i>
+                </div>
+                <div class="menu-title">Return Order Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('return.request') }}"><i class="bx bx-right-arrow-alt"></i>Return Request</a>
+                </li>
+                <li> <a href="{{ route('admin.confirm.order') }}"><i class="bx bx-right-arrow-alt"></i>Complete Request</a>
+                </li>
+                
+            </ul>
+        </li>
+
     </ul>
     <!--end navigation-->
 </div>

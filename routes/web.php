@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -267,6 +268,12 @@ Route::controller(OrderController::class)->group(function(){
     Route::get('/confirm/delivered/{order_id}', 'ProcessingToDelivered')->name('confirm-delivered');
 
     Route::get('/admin/invoice/download/{order_id}', 'InvoiceDownload')->name('admin.invoice.download');
+});
+
+//Return Order All Route
+Route::controller(ReturnController::class)->group(function(){
+    Route::get('/return/request', 'ReturnRequest')->name('return.request');
+   
 });
 
 }); //Admin End Middleware
