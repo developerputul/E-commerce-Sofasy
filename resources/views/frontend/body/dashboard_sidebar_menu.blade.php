@@ -17,6 +17,11 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link {{ ($route == 'user.return.page')? 'active': '' }}" href="{{ route('user.return.page') }}">
+                <i class="fi-rs-shopping-bag mr-10"></i>Return Order</a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href="#"><i
                 class="fi-rs-shopping-cart-check mr-10"></i>Track Your Order</a>
             </li>

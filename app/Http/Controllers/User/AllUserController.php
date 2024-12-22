@@ -71,4 +71,10 @@ class AllUserController extends Controller
   return redirect()->route('user.order.page')->with($notification);
 
   }//End Method
+
+  public function UserReturnPage(){
+
+    $orders = Order::where('user_id',Auth::id())->where('return_order','=',1)->orderBy('id','DESC')->get();
+    return view('frontend.order.return_order_view',compact('orders'));
+  }//End Method
 }
