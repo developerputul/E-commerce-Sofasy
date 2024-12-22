@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 
 class AllUserController extends Controller
 {
@@ -54,4 +55,20 @@ class AllUserController extends Controller
           ]);
           return $pdf->download('invoice.pdf');
   }// End Method
+
+  public function ReturnOrder(Request $request,$order_id){
+
+    Order::findOrFail($order_id)->update([
+      'return_date' => Carbon::now()->format('d F Y'),
+      'return_reason' => $request->return_reason,
+      'return_order' => 1,
+    ]);
+
+    $notification = array(
+      'message' => 'Return Request Send Successfully',
+      'alert-type' => 'success'
+  );
+  return redirect()->route('user.order.page')->with($notification);
+
+  }//End Method
 }
