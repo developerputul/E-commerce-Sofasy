@@ -273,6 +273,8 @@ Route::controller(OrderController::class)->group(function(){
 //Return Order All Route
 Route::controller(ReturnController::class)->group(function(){
     Route::get('/return/request', 'ReturnRequest')->name('return.request');
+    Route::get('/return/request/approved/{order_id}', 'ReturnRequestApproved')->name('return.request.approved');
+    Route::get('/return/request/complete', 'ReturnRequestComplete')->name('return.request.complete');
    
 });
 

@@ -6,13 +6,13 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">All Return Order</div>
+        <div class="breadcrumb-title pe-3">Complete Return Order</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">All Return Order</li>
+                    <li class="breadcrumb-item active" aria-current="page">Complete Return Order</li>
                 </ol>
             </nav>
         </div>
@@ -57,9 +57,8 @@
                             
                             <td>
                             <a href="{{ route('admin.order.details',$item->id) }}" class="btn btn-info" title="Details"><i class="fa fa-eye"></i></a>
-
-                            <a href="{{ route('return.request.approved',$item->id) }}" class="btn btn-danger" title="Approved" id="approved"><i class="fa-solid fa-person-circle-check"></i></a>
                             </td>
+
                         </tr>
                         @endforeach
                     </tbody>
