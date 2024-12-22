@@ -57,21 +57,22 @@
                                                 <td>{{ $order->payment_method }}</td>
                                                 <td>{{ $order->invoice_no }}</td>
 
-                                                <td>
-                                                    @if ($order->status == 'pending')
-                                                        <span
-                                                            class="badge rounded-pill bg-warning">Pending</span>
-                                                    @elseif ($order->status == 'confirm')
-                                                        <span
-                                                            class="badge rounded-pill bg-info">Confirm</span>
-                                                    @elseif ($order->status == 'processing')
-                                                        <span
-                                                            class="badge rounded-pill bg-danger">Processing</span>
-                                                    @elseif ($order->status == 'delivered')
-                                                        <span
-                                                            class="badge rounded-pill bg-success">Delivered</span>
-                                                    @endif
-                                                </td>
+                                    <td>
+                                        @if ($order->status == 'pending')
+                                        <span class="badge rounded-pill bg-warning">Pending</span>
+                                        @elseif ($order->status == 'confirm')
+                                        <span class="badge rounded-pill bg-info">Confirm</span>
+                                        @elseif ($order->status == 'processing')
+                                        <span class="badge rounded-pill bg-dark">Processing</span>
+                                        @elseif ($order->status == 'delivered')
+                                        <span class="badge rounded-pill bg-success">Delivered</span>
+
+                                        @if ($order->return_order == 1)
+                                        <span class="badge rounded-pill bg-danger">Return</span>
+                                        @endif
+
+                                        @endif
+                                    </td>
                                                 <td>
                                             <a href="{{ url('user/order_details/' . $order->id) }}"
                                             class="btn-sm btn-success"><i class="fa fa-eye"></i>View</a>
